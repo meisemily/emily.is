@@ -1,0 +1,314 @@
+@import "_common.scss";
+
+// ===========================================================================
+// Sections
+// ===========================================================================
+
+// For waves
+// @todo: make waves reusable
+section {
+    padding-top: 100px;
+}
+
+#intro {
+    padding: 45px 0 80px 0;
+    text-align: center;
+
+    h1 {
+        margin: 25px 0 15px 0;
+    }
+
+    p {
+        margin-bottom: 30px;
+        font-size: 1.4em;
+    }
+}
+
+#timeline {
+    $timeline_width: 10px;
+    $timeline_color: $page_bg;
+    $stick_width: 55px;
+
+    overflow: hidden;
+    background-color: #cedbe0;
+    background-position: top;
+    background-repeat: repeat-x;
+    @include at2x('bg_wave_light', 158px, 44px);
+
+    .constrainer {
+        position: relative;
+    }
+
+    h2 {
+        margin-bottom: 0;
+        padding-top: 20px;
+        color: lighten($page_bg, 3%);
+    }
+
+    > div > p {
+        color: $teal;
+    }
+
+    strong {
+        color: $header_color;
+    }
+
+    p {
+        margin-top: 10px;
+    }
+
+    ol {
+        padding: 50px 0;
+        overflow: hidden;
+
+        &:after {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            margin-left: -$timeline_width/2;
+            display: block;
+            content: '';
+            width: $timeline_width;
+            height: 105%;
+            background-color: $timeline_color;
+            border-radius: 2px;
+        }
+    }
+
+    li {
+        position: relative;
+        clear: both;
+        width: 380px;
+        padding: 20px;
+        background-color: $page_bg;
+        z-index: 1;
+
+        &:hover {
+            background-color: lighten($page_bg, 6%);
+        }
+
+        &:before {
+            position: absolute;
+            top: 15px;
+            display: block;
+            content: '';
+            width: $stick_width;
+            height: $timeline_width;
+            background-color: $timeline_color;
+        }
+
+        &.odd {
+            float: left;
+
+            &:before {
+                right: -$stick_width;
+            }
+        }
+
+        &.even {
+            float: right;
+
+            &:before {
+                left: -$stick_width;
+            }
+        }
+
+        &.current {
+            h3,
+            strong {
+                color: #67a8ad;
+            }
+        }
+    }
+}
+
+#music {
+    $text_color: #cedbe0;
+
+    overflow: hidden;
+    padding-bottom: 100px;
+    text-align: center;
+    background-color: $teal;
+    background-position: top;
+    background-repeat: repeat-x;
+    @include at2x('bg_wave_dark', 158px, 44px);
+
+    h2 {
+        color: #fff;
+    }
+
+    p {
+        color: $text_color;
+        font-size: 1.3em;
+    }
+
+    a:hover {
+        color: lighten($text_color, 10%);
+    }
+
+    ol {
+        margin: 30px -15px;
+    }
+
+    li {
+        display: inline-block;
+        margin: 15px;
+
+        img {
+            width: 201px;
+            height: 201px;
+            border: 8px solid darken($teal, 8%);
+            opacity: 0.85;
+            @include simple_transition;
+        }
+
+        a:hover img {
+            border-color: darken($teal, 10%);
+            opacity: 1;
+        }
+    }
+}
+
+// ===========================================================================
+// Media Queries
+// ===========================================================================
+
+@media screen and (max-width: 1000px) {
+    #timeline li {
+
+        $stick_width: 34px;
+
+        &:before {
+            width: $stick_width;
+        }
+
+        &.odd {
+            &:before {
+                right: -$stick_width;
+            }
+        }
+
+        &.even {
+            &:before {
+                left: -$stick_width;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 940px) {
+    #timeline {
+        ol {
+            padding-top: 30px;
+
+            &:after {
+                top: 0;
+                height: 100%;
+            }
+        }
+
+        li {
+            width: auto;
+
+            &.odd,
+            &.even {
+                float: none;
+            }
+
+            &:before {
+                display: none;
+            }
+
+            + li {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    // Waves
+    section {
+        padding-top: 70px;
+    }
+
+    #music li img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    #intro {
+        img {
+            @include rotate(360deg);
+            @include simple_transition($duration: 4s);
+
+            &:hover {
+                @include rotate(-720deg);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #music {
+        li {
+            margin: 10px;
+
+            img {
+                width: 110px;
+                height: 110px;
+                border-width: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #intro {
+        h1 {
+            margin: 10px 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+
+        img {
+            margin-top: -15px;
+            width: 200px;
+            height: auto;
+        }
+    }
+
+    #timeline {
+        > div > p,
+        h2 {
+            text-align: center;
+        }
+
+        h2,
+        ol {
+            padding: 0;
+        }
+
+        ol {
+            position: relative;
+            margin: 30px 0;
+        }
+    }
+
+    #music {
+        padding-bottom: 60px;
+
+        p {
+            font-size: 1.1em;
+        }
+
+        ol {
+            margin: 20px 0;
+        }
+    }
+}

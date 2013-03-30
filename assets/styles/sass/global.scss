@@ -1,0 +1,229 @@
+@import "_common.scss";
+
+// ===========================================================================
+// Utilities
+// ===========================================================================
+
+.constrainer {
+    margin: 0 auto;
+    padding: 0;
+    width: 960px;
+}
+
+.offstage {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+// ===========================================================================
+// Template
+// ===========================================================================
+
+body {
+    color: #6d717d;
+    font-size: 1.02em;
+    line-height: 1.45;
+    font-family: 'Open Sans', sans-serif;
+    background-color: $page_bg;
+}
+
+a {
+    color: inherit;
+    @include simple_transition;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: $header_color;
+}
+
+h1 {
+    font-size: 2.6em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+button,
+.button {
+    display: inline-block;
+    padding: 17px 26px;
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 700;
+    background-color: $header_bg;
+    border-radius: 3px;
+    text-decoration: none;
+    border: 0;
+
+    &:hover {
+        background-color: $maroon;
+    }
+}
+
+#site_header {
+    background-color: $header_bg;
+    border-bottom: 10px solid #fff;
+    overflow: hidden;
+
+    h1,
+    nav {
+        line-height: 80px;
+    }
+
+    h1 {
+        float: left;
+        margin: 0;
+        font-weight: normal;
+        font-size: 1.4em;
+
+        a {
+            color: #fff;
+        }
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    nav {
+        $nav_active: lighten($header_bg, 3%);
+
+        float: right;
+        font-size: 1.11em;
+
+        li {
+            display: inline-block;
+
+            &.active a {
+                background-color: $nav_active;
+            }
+
+            a {
+                padding: 0 22px;
+                color: desaturate(lighten($nav_active, 25%), 10%);
+
+                &:hover {
+                    background-color: lighten($nav_active, 2%);
+                }
+            }
+        }
+    }
+}
+
+#site_footer {
+    $text_color: #b87b8a;
+
+    background-color: #873c4f;
+    border-top: 10px solid #fff;
+    color: $text_color;
+
+    a:hover {
+        color: lighten($text_color, 10%);
+    }
+
+    .social_links {
+        float: right;
+        font-size: 1.4em;
+
+        li {
+            display: inline-block;
+
+            & + li {
+                margin-left: 5px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+footer,
+section {
+    padding: 50px 0;
+}
+
+// ===========================================================================
+// Media Queries
+// ===========================================================================
+
+@media screen and (max-width: 1000px) {
+    .constrainer {
+        padding: 0 30px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    h1 {
+        font-size: 2.2em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.3em;
+    }
+
+    #site_footer {
+        text-align: center;
+
+        br {
+            display: none;
+        }
+
+        .social_links {
+            float: none;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .constrainer {
+        padding: 0 15px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+
+    #site_header {
+        text-align: center;
+
+        h1,
+        nav {
+            float: none;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            line-height: 80px;
+        }
+
+        nav {
+            line-height: 45px;
+        }
+    }
+}
