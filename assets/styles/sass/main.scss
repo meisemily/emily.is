@@ -15,7 +15,7 @@ section {
     text-align: center;
 
     h1 {
-        margin: 25px 0 15px 0;
+        margin: 20px 0 10px 0;
     }
 
     p {
@@ -82,9 +82,10 @@ section {
         padding: 20px;
         background-color: $page_bg;
         z-index: 1;
+        @include simple_transition;
 
         &:hover {
-            background-color: lighten($page_bg, 6%);
+            background-color: lighten($page_bg, 4%);
         }
 
         &:before {

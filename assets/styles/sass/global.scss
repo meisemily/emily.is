@@ -86,7 +86,7 @@ button,
         font-size: 1.4em;
 
         a {
-            color: #fff;
+            color: desaturate(lighten($header_bg, 55%), 16%);
         }
     }
 
@@ -110,7 +110,7 @@ button,
 
             a {
                 padding: 0 22px;
-                color: desaturate(lighten($nav_active, 25%), 10%);
+                color: desaturate(lighten($nav_active, 30%), 8%);
 
                 &:hover {
                     background-color: lighten($nav_active, 2%);
@@ -121,9 +121,10 @@ button,
 }
 
 #site_footer {
-    $text_color: #b87b8a;
+    $text_color: #B3808D;
 
-    background-color: #873c4f;
+    padding: 35px 0;
+    background-color: #814252;
     border-top: 10px solid #fff;
     color: $text_color;
 
@@ -149,7 +150,6 @@ button,
     }
 }
 
-footer,
 section {
     padding: 50px 0;
 }
