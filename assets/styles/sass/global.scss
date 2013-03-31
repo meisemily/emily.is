@@ -83,7 +83,7 @@ button,
         float: left;
         margin: 0;
         font-weight: normal;
-        font-size: 1.4em;
+        font-size: 1.2em;
 
         a {
             color: desaturate(lighten($header_bg, 55%), 16%);
@@ -127,6 +127,10 @@ button,
     background-color: #814252;
     border-top: 10px solid #fff;
     color: $text_color;
+
+    p {
+        font-size: 0.9em;
+    }
 
     a:hover {
         color: lighten($text_color, 10%);
