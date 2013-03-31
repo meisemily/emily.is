@@ -46,7 +46,11 @@ section {
     }
 
     > div > p {
-        color: $teal;
+        color: darken($teal, 7%);
+
+        a:hover {
+            color: $teal;
+        }
     }
 
     strong {

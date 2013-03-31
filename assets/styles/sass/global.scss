@@ -59,13 +59,13 @@ button,
     color: #fff;
     font-size: 1.1em;
     font-weight: 700;
-    background-color: $header_bg;
+    background-color: $maroon;
     border-radius: 3px;
     text-decoration: none;
     border: 0;
 
     &:hover {
-        background-color: $maroon;
+        background-color: lighten($maroon, 5%);
     }
 }
 
