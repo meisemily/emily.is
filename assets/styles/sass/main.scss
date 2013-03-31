@@ -7,7 +7,7 @@
 // For waves
 // @todo: make waves reusable
 section {
-    padding-top: 100px;
+    padding-top: 90px;
 }
 
 #intro {
@@ -40,8 +40,8 @@ section {
     }
 
     h2 {
-        margin-bottom: 0;
-        padding-top: 20px;
+        margin: -20px 0 0 0;
+        padding-top: 20px; // Padding for anchor
         color: lighten($page_bg, 3%);
     }
 
@@ -87,6 +87,10 @@ section {
         background-color: $page_bg;
         z-index: 1;
         @include simple_transition;
+
+        + li {
+            margin-top: -28px;
+        }
 
         &:hover {
             background-color: lighten($page_bg, 4%);
