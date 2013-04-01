@@ -4,12 +4,6 @@
 // Sections
 // ===========================================================================
 
-// For waves
-// @todo: make waves reusable
-section {
-    padding-top: 90px;
-}
-
 #intro {
     padding: 40px 0 80px 0;
     text-align: center;
@@ -30,10 +24,6 @@ section {
     $stick_width: 55px;
 
     overflow: hidden;
-    background-color: #cedbe0;
-    background-position: top;
-    background-repeat: repeat-x;
-    @include at2x('bg_wave_light', 158px, 44px);
 
     .constrainer {
         position: relative;
@@ -46,10 +36,10 @@ section {
     }
 
     > div > p {
-        color: darken($teal, 7%);
+        color: darken($seafoam, 7%);
 
         a:hover {
-            color: $teal;
+            color: $seafoam;
         }
     }
 
@@ -93,7 +83,7 @@ section {
         }
 
         &:hover {
-            background-color: lighten($page_bg, 4%);
+            background-color: lighten($page_bg, 3%);
         }
 
         &:before {
@@ -132,15 +122,11 @@ section {
 }
 
 #music {
-    $text_color: #cedbe0;
+    $text_color: $cloudy;
 
     overflow: hidden;
-    padding-bottom: 100px;
+    padding-bottom: 80px;
     text-align: center;
-    background-color: $teal;
-    background-position: top;
-    background-repeat: repeat-x;
-    @include at2x('bg_wave_dark', 158px, 44px);
 
     h2 {
         color: #fff;
@@ -166,13 +152,13 @@ section {
         img {
             width: 201px;
             height: 201px;
-            border: 8px solid darken($teal, 8%);
+            border: 8px solid darken($seafoam, 8%);
             opacity: 0.85;
             @include simple_transition;
         }
 
         a:hover img {
-            border-color: darken($teal, 10%);
+            border-color: darken($seafoam, 10%);
             opacity: 1;
         }
     }
@@ -235,8 +221,7 @@ section {
 }
 
 @media screen and (max-width: 770px) {
-    // Waves
-    section {
+    .waves {
         padding-top: 70px;
     }
 
@@ -301,7 +286,6 @@ section {
             margin-top: 0;
         }
 
-        h2,
         ol {
             padding: 0;
         }

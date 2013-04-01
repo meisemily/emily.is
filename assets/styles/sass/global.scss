@@ -21,7 +21,7 @@
 // ===========================================================================
 
 body {
-    color: #6d717d;
+    color: $body_color;
     font-size: 1.02em;
     line-height: 1.45;
     font-family: 'Open Sans', sans-serif;
@@ -154,8 +154,20 @@ button,
     }
 }
 
-section {
-    padding: 50px 0;
+.waves {
+    padding: 90px 0 50px 0;
+    background-position: top;
+    background-repeat: repeat-x;
+
+    &.cloudy {
+        background-color: $cloudy;
+        @include at2x('bg_wave_light', 158px, 44px);
+    }
+
+    &.seafoam {
+        background-color: $seafoam;
+        @include at2x('bg_wave_dark', 158px, 44px);
+    }
 }
 
 // ===========================================================================
