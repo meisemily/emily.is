@@ -20,14 +20,11 @@ $(document).ready(function(){
                 // }
 
                 $('#lastfm').append(
-                     "<li>"
-                    + "<a href='" + chart[i].url + "' title='" + chart[i].artist.name + " - " + chart[i].name + "'>"
-                    + "<img src='" + img + "'></a>"
-                    +"</li>"
+                     "<li><a href='" + chart[i].url + "' title='" + chart[i].artist.name + " - " + chart[i].name + "'><img src='" + img + "'></a></li>"
                 );
             }
 
-            //$('#lastfm .loader').removeClass('loading');
+            $('#lastfm').removeClass('loading');
         }
     );
 

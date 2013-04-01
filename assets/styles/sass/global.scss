@@ -16,6 +16,21 @@
     left: -9999px;
 }
 
+.loading {
+    text-align: center;
+
+    &:after {
+        display: inline-block;
+        content: '';
+        width: 60px;
+        height: 60px;
+        border: 10px solid darken($seafoam, 10%);
+        border-right-color: transparent;
+        border-radius: 50%;
+        @include animation($name: spin);
+    }
+}
+
 // ===========================================================================
 // Template
 // ===========================================================================
