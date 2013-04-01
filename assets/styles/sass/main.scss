@@ -74,6 +74,7 @@
         clear: both;
         width: 380px;
         padding: 20px;
+        padding-top: 16px;
         background-color: $page_bg;
         z-index: 1;
         @include simple_transition;
@@ -150,9 +151,9 @@
         margin: 15px;
 
         img {
-            width: 201px;
-            height: 201px;
-            border: 8px solid darken($seafoam, 8%);
+            width: 205px;
+            height: 205px;
+            border: 6px solid darken($seafoam, 8%);
             opacity: 0.85;
             @include simple_transition;
         }
@@ -252,7 +253,6 @@
             img {
                 width: 110px;
                 height: 110px;
-                border-width: 5px;
             }
         }
     }
