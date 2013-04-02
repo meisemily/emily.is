@@ -99,7 +99,6 @@
   color: #fff;
   /*RGB Fallback */
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.75em;
   text-align: center;
   background-color: #322f36;
   border-radius: 3px;
@@ -191,9 +190,8 @@ button,
   padding: 35px 0;
   background-color: #814252;
   border-top: 10px solid white;
-  color: #b3808d; }
-  #site_footer p {
-    font-size: 0.85em; }
+  color: #b3808d;
+  font-size: 0.85em; }
   #site_footer a:hover {
     color: #c6a0aa; }
   #site_footer .social_links {
@@ -206,14 +204,11 @@ button,
       #site_footer .social_links li a {
         text-decoration: none; }
         #site_footer .social_links li a:before {
-          font-size: 1.5em; }
+          font-size: 1.7em; }
       #site_footer .social_links li .tooltip {
-        opacity: 0;
-        -ms-transition: all 0.08s ease-out 0s;
-        -webkit-transition: all 0.08s ease-out 0s;
-        transition: all 0.08s ease-out 0s; }
+        display: none; }
       #site_footer .social_links li:hover .tooltip {
-        opacity: 1; }
+        display: block; }
 
 .waves {
   padding: 90px 0 50px 0;

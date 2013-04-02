@@ -43,7 +43,6 @@
     padding: 8px;
     color: #fff; /*RGB Fallback */
     color: rgba(255, 255, 255, 0.7);
-    font-size: 0.75em;
     text-align: center;
     background-color: $tooltip_bg;
     border-radius: 3px;
@@ -172,10 +171,7 @@ button,
     background-color: #814252;
     border-top: 10px solid #fff;
     color: $text_color;
-
-    p {
-        font-size: 0.85em;
-    }
+    font-size: 0.85em;
 
     a:hover {
         color: lighten($text_color, 10%);
@@ -196,17 +192,16 @@ button,
                 text-decoration: none;
 
                 &:before {
-                    font-size: 1.5em;
+                    font-size: 1.7em;
                 }
             }
 
             .tooltip {
-                opacity: 0;
-                @include simple_transition;
+                display: none;
             }
 
             &:hover .tooltip {
-                opacity: 1;
+                display: block;
             }
         }
     }
