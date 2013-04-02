@@ -242,7 +242,7 @@
             @include simple_transition($duration: 4s);
 
             &:hover {
-                @include rotate(-720deg);
+                @include rotate(-360deg);
             }
         }
     }
@@ -301,10 +301,6 @@
 
         p {
             font-size: 1.1em;
-
-            &.outro {
-                font-size: 1em;
-            }
         }
     }
 }
