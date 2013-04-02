@@ -1,7 +1,7 @@
 @import "_common.scss";
 
 // ===========================================================================
-// Utilities
+// Utilities + Components
 // ===========================================================================
 
 .constrainer {
@@ -28,6 +28,36 @@
         border-right-color: transparent;
         border-radius: 50%;
         @include animation($name: spin);
+    }
+}
+
+.tooltip {
+    $tooltip_bg: #322f36;
+
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-bottom: 12px;
+    margin-left: -36px;
+    width: 60px;
+    padding: 8px;
+    color: #fff; /*RGB Fallback */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75em;
+    text-align: center;
+    background-color: $tooltip_bg;
+    border-radius: 3px;
+    z-index: 2;
+
+    &:after {
+        position: absolute;
+        display: block;
+        bottom: -16px;
+        left: 50%;
+        margin-left: -8px;
+        content: '';
+        border: 8px solid transparent;
+        border-top-color: $tooltip_bg;
     }
 }
 
@@ -144,7 +174,7 @@ button,
     color: $text_color;
 
     p {
-        font-size: 0.9em;
+        font-size: 0.85em;
     }
 
     a:hover {
@@ -153,17 +183,30 @@ button,
 
     .social_links {
         float: right;
-        font-size: 1.4em;
 
         li {
+            position: relative;
             display: inline-block;
 
             & + li {
-                margin-left: 5px;
+                margin-left: 8px;
             }
 
             a {
                 text-decoration: none;
+
+                &:before {
+                    font-size: 1.5em;
+                }
+            }
+
+            .tooltip {
+                opacity: 0;
+                @include simple_transition;
+            }
+
+            &:hover .tooltip {
+                opacity: 1;
             }
         }
     }
