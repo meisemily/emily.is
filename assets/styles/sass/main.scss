@@ -301,6 +301,10 @@
 
         p {
             font-size: 1.1em;
+
+            &.outro {
+                font-size: 1em;
+            }
         }
     }
 }
