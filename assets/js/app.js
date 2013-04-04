@@ -12,7 +12,7 @@ $(document).ready(function(){
             var chart = data.topalbums.album;
             var img;
 
-            for (var i = 0 ; i < Math.min(12,chart.length); i++){
+            for (var i = 0 ; i < Math.min(8,chart.length); i++){
                 img = chart[i].image[3]['#text'];
 
                 // if (img.search(/noimage/i) > 1) {

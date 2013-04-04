@@ -146,24 +146,33 @@
     }
 
     ol {
-        margin: 25px -15px;
+        margin: 25px -1.5%;
     }
 
     li {
         display: inline-block;
-        margin: 15px;
+        margin: 1.5%;
+        width: 22%;
 
         img {
-            width: 205px;
-            height: 205px;
-            border: 6px solid darken($seafoam, 8%);
+            display: block;
+            width: 100%;
+            height: 100%;
             opacity: 0.85;
-            @include simple_transition;
         }
 
-        a:hover img {
-            border-color: darken($seafoam, 10%);
-            opacity: 1;
+        a {
+            display: block;
+            border: 6px solid darken($seafoam, 8%);
+            @include simple_transition;
+
+            &:hover {
+                border-color: darken($seafoam, 10%);
+
+                img {
+                    opacity: 1;
+                }
+            }
         }
     }
 }
@@ -228,11 +237,6 @@
     .waves {
         padding-top: 70px;
     }
-
-    #music li img {
-        width: 180px;
-        height: 180px;
-    }
 }
 
 @media screen and (min-width: 600px) {
@@ -248,15 +252,16 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 540px) {
     #music {
-        li {
-            margin: 10px;
+        ol {
+            margin-right: -3%;
+            margin-left: -3%;
+        }
 
-            img {
-                width: 118px;
-                height: 118px;
-            }
+        li {
+            margin: 3%;
+            width: 44%;
         }
     }
 }
