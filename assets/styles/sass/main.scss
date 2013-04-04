@@ -36,7 +36,7 @@
     }
 
     > div > p {
-        color: darken($seafoam, 7%);
+        color: $teal;
 
         a:hover {
             color: $seafoam;
@@ -116,7 +116,7 @@
         &.current {
             h3,
             strong {
-                color: #67a8ad;
+                color: $teal;
             }
         }
     }
@@ -154,6 +154,11 @@
         margin: 1.5%;
         width: 22%;
 
+        a,
+        img {
+            @include simple_transition;
+        }
+
         img {
             display: block;
             width: 100%;
@@ -164,7 +169,6 @@
         a {
             display: block;
             border: 6px solid darken($seafoam, 8%);
-            @include simple_transition;
 
             &:hover {
                 border-color: darken($seafoam, 10%);

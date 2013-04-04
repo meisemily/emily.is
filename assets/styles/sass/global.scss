@@ -72,6 +72,14 @@ body {
     background-color: $page_bg;
 }
 
+::selection {
+    background: $page_selection;
+}
+
+::-moz-selection {
+    background: $page_selection;
+}
+
 a {
     color: inherit;
     @include simple_transition;
