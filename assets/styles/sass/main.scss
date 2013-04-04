@@ -43,6 +43,11 @@
         }
     }
 
+    h3 {
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+
     strong {
         color: $header_color;
     }
@@ -74,7 +79,6 @@
         clear: both;
         width: 380px;
         padding: 20px;
-        padding-top: 16px;
         background-color: $page_bg;
         z-index: 1;
         @include simple_transition;
