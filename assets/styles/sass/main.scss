@@ -125,6 +125,7 @@
 #music {
     $text_color: $cloudy;
 
+    padding-bottom: 60px;
     overflow: hidden;
     text-align: center;
 
@@ -237,12 +238,6 @@
     }
 }
 
-@media screen and (max-width: 770px) {
-    .waves {
-        padding-top: 70px;
-    }
-}
-
 @media screen and (min-width: 600px) {
     #intro {
         img {
@@ -294,10 +289,6 @@
             text-align: center;
         }
 
-        h2 {
-            margin-top: 0;
-        }
-
         ol {
             position: relative;
             padding: 0;
@@ -305,11 +296,7 @@
         }
     }
 
-    #music {
-        padding-bottom: 60px;
-
-        p {
-            font-size: 1.1em;
-        }
+    #music p {
+        font-size: 1.1em;
     }
 }
