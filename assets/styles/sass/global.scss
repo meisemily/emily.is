@@ -179,7 +179,7 @@ button,
     background-color: #814252;
     border-top: 10px solid #fff;
     color: $text_color;
-    font-size: 0.85em;
+    font-size: 0.94em;
 
     a:hover {
         color: lighten($text_color, 10%);
@@ -201,7 +201,7 @@ button,
                 text-decoration: none;
 
                 &:before {
-                    font-size: 1.7em;
+                    font-size: 1.8em;
                 }
             }
 
@@ -284,7 +284,7 @@ button,
     }
 
     h3 {
-        font-size: 1em;
+        font-size: 1.15em;
     }
 
     #site_header {
@@ -303,5 +303,9 @@ button,
         nav {
             line-height: 45px;
         }
+    }
+
+    #site_footer {
+        font-size: 0.85em;
     }
 }
