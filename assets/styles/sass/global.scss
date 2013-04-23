@@ -128,7 +128,7 @@ button,
 
     h1,
     nav {
-        line-height: 80px;
+        line-height: 74px;
     }
 
     h1 {
@@ -193,7 +193,7 @@ button,
             display: inline-block;
 
             & + li {
-                margin-left: 8px;
+                margin-left: 10px;
             }
 
             a {
@@ -201,7 +201,7 @@ button,
                 text-decoration: none;
 
                 &:before {
-                    font-size: 1.8em;
+                    font-size: 1.5em;
                 }
             }
 
