@@ -70,6 +70,7 @@ body {
     line-height: 1.45;
     font-family: 'Open Sans', sans-serif;
     background-color: $page_bg;
+    -webkit-text-size-adjust: none;
 }
 
 ::selection {
