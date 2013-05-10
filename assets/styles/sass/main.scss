@@ -148,7 +148,7 @@
 
     .outro {
         padding: 15px;
-        font-size: 1.15em;
+        font-size: 1.1em;
         background-color: darken($seafoam, 4%);
     }
 
@@ -311,12 +311,6 @@
             position: relative;
             padding: 0;
             margin: 30px 0;
-        }
-    }
-
-    #music {
-        .outro {
-            font-size: 1.1em;
         }
     }
 }
