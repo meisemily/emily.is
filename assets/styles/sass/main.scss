@@ -148,7 +148,7 @@
 
     .outro {
         padding: 15px;
-        font-size: 1.1em;
+        font-size: 1em;
         background-color: darken($seafoam, 4%);
     }
 
@@ -174,7 +174,6 @@
             display: block;
             width: 100%;
             height: 100%;
-            opacity: 0.85;
         }
 
         a {
@@ -182,11 +181,7 @@
             border: 4px solid darken($seafoam, 8%);
 
             &:hover {
-                border-color: darken($seafoam, 10%);
-
-                img {
-                    opacity: 1;
-                }
+                border-color: darken($seafoam, 20%);
             }
         }
     }
