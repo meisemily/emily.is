@@ -1,312 +1,156 @@
-@import "_common.scss";
+@import "../../fonts/ss-social-regular.css";
 
 // ===========================================================================
-// Utilities + Components
+// Mixins
 // ===========================================================================
 
-.constrainer {
-    margin: 0 auto;
+@mixin transition($duration: 0.08s, $property: all, $easing: ease-out, $delay: 0s) {
+    -ms-transition: $property $duration $easing $delay;
+    -webkit-transition: $property $duration $easing $delay;
+    transition: $property $duration $easing $delay;
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -moz-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
+// ===========================================================================
+// Variables
+// ===========================================================================
+
+$accent_color:      #609F80;
+$bg_color:          #f6f6f6;
+$header_color:      #4B574D;
+$body_color:        $header_color;
+$link_color:        #609F80;
+$link_hover_color:  #CBB345;
+
+// ===========================================================================
+// Reset
+// ===========================================================================
+
+body {
+    margin: 0;
     padding: 0;
-    width: 960px;
 }
 
-.offstage {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
+p,
+h1,
+ul {
+    margin: 0;
+    padding: 0;
 }
 
-.loading {
-    text-align: center;
-
-    &:after {
-        display: inline-block;
-        content: '';
-        width: 60px;
-        height: 60px;
-        border: 10px solid darken($seafoam, 10%);
-        border-right-color: transparent;
-        border-radius: 50%;
-        @include animation($name: spin);
-    }
+li {
+    list-style-type: none;
 }
 
-.tooltip {
-    $tooltip_bg: #322f36;
-
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-bottom: 12px;
-    margin-left: -36px;
-    width: 60px;
-    padding: 8px;
-    color: #fff; /*RGB Fallback */
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    background-color: $tooltip_bg;
-    border-radius: 3px;
-    z-index: 2;
-
-    &:after {
-        position: absolute;
-        display: block;
-        bottom: -16px;
-        left: 50%;
-        margin-left: -8px;
-        content: '';
-        border: 8px solid transparent;
-        border-top-color: $tooltip_bg;
-    }
+header,
+section {
+    display: block;
 }
 
 // ===========================================================================
-// Template
+// Stuff
 // ===========================================================================
 
 body {
     color: $body_color;
-    font-size: 1.02em;
-    line-height: 1.45;
-    font-family: 'Open Sans', sans-serif;
-    background-color: $page_bg;
-    -webkit-text-size-adjust: none;
+    background-color: $bg_color;
+    border-top: 1em solid $accent_color;
+    font-family: 'proxima-nova', helvetica, sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.6;
 }
 
-::selection {
-    background: $page_selection;
-}
-
-::-moz-selection {
-    background: $page_selection;
-}
-
-a {
-    color: inherit;
-    @include simple_transition;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
-    color: $header_color;
+section {
+    margin: 0 auto;
+    padding: 4em 8em;
+    max-width: 600px;
 }
 
 h1 {
-    font-size: 2.6em;
-    margin-bottom: 10px;
+    color: $header_color;
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 0.35em;
 }
 
-h2 {
-    font-size: 2.2em;
-    margin-bottom: 10px;
-}
-
-h3 {
-    font-size: 1.5em;
-}
-
-button,
-.button {
+a {
     display: inline-block;
-    padding: 17px 26px;
-    color: #fff;
-    font-size: 1.1em;
-    font-weight: 700;
-    background-color: $maroon;
-    border-radius: 3px;
     text-decoration: none;
-    border: 0;
+    @include transition;
 
     &:hover {
-        background-color: lighten($maroon, 5%);
+        @include transform(translate(0, -2px));
     }
 }
 
-#site_header {
-    background-color: $header_bg;
-    border-bottom: 10px solid #fff;
-    overflow: hidden;
+.img {
+    margin-bottom: 1em;
+    width: 5em;
+    height: 5em;
+    background-color: lighten($body_color, 20%);
+    border-radius: 100%;
+}
 
-    h1,
-    nav {
-        line-height: 74px;
+p > a {
+    color: $link_color;
+    border-bottom: 2px solid $link_color;
+
+    &:hover {
+        color: $link_hover_color;
+        border-bottom: 2px solid $link_hover_color;
     }
+}
 
-    h1 {
-        float: left;
-        margin: 0;
-        font-weight: normal;
-        font-size: 1.2em;
-
-        a {
-            color: desaturate(lighten($header_bg, 55%), 16%);
-        }
+.social_links {
+    li {
+        display: inline-block;
+        margin: 1.5em 0.3em;
     }
 
     a {
-        display: block;
-        text-decoration: none;
-    }
+        color: lighten($body_color, 30%);
+        font-size: 2rem;
 
-    nav {
-        $nav_active: lighten($header_bg, 3%);
+        > span {
+            display: block;
+            width: 0;
+            height: 0;
+            text-indent: -1000em;
+            overflow: hidden;
+        }
 
-        float: right;
-        font-size: 1.11em;
+        &.ss-twitter:hover {
+            color: #00b0ed;
+        }
 
-        li {
-            display: inline-block;
+        &.ss-tumblr:hover {
+            color: #34465d;
+        }
 
-            &.active a {
-                background-color: $nav_active;
-            }
+        &.ss-rdio:hover {
+            color: #006ed2;
+        }
 
-            a {
-                padding: 0 22px;
-                color: desaturate(lighten($nav_active, 30%), 8%);
-
-                &:hover {
-                    background-color: lighten($nav_active, 2%);
-                }
-            }
+        &.ss-instagram:hover {
+            color: #211f20;
         }
     }
 }
 
-#site_footer {
-    $text_color: #B3808D;
-
-    padding: 35px 0;
-    background-color: #814252;
-    border-top: 10px solid #fff;
-    color: $text_color;
-    font-size: 0.94em;
-
-    a:hover {
-        color: lighten($text_color, 10%);
-    }
-
-    .social_links {
-        float: right;
-
-        li {
-            position: relative;
-            display: inline-block;
-
-            & + li {
-                margin-left: 10px;
-            }
-
-            a {
-                display: block;
-                text-decoration: none;
-
-                &:before {
-                    font-size: 1.5em;
-                }
-            }
-
-            .tooltip {
-                display: none;
-            }
-
-            &:hover .tooltip {
-                display: block;
-            }
-        }
+@media screen and (max-width: 600px) {
+    section {
+        padding: 4em;
     }
 }
 
-.waves {
-    padding: 90px 0 50px 0;
-    background-position: top;
-    background-repeat: repeat-x;
-
-    &.cloudy {
-        background-color: $cloudy;
-        @include at2x('bg_wave_light', 158px, 44px);
-    }
-
-    &.seafoam {
-        background-color: $seafoam;
-        @include at2x('bg_wave_dark', 158px, 44px);
-    }
-}
-
-// ===========================================================================
-// Media Queries
-// ===========================================================================
-
-@media screen and (max-width: 1000px) {
-    .constrainer {
-        padding: 0 30px;
-        width: auto;
-    }
-}
-
-@media screen and (max-width: 740px) {
-    h1 {
-        font-size: 2.2em;
-    }
-
-    h2 {
-        font-size: 2em;
-    }
-
-    h3 {
-        font-size: 1.3em;
-    }
-
-    #site_footer {
-        text-align: center;
-
-        br {
-            display: none;
-        }
-
-        .social_links {
-            float: none;
-            margin-bottom: 20px;
-        }
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .constrainer {
-        padding: 0 15px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    h2 {
-        font-size: 1.4em;
-    }
-
-    h3 {
-        font-size: 1.15em;
-    }
-
-    #site_header {
-        text-align: center;
-
-        h1,
-        nav {
-            float: none;
-        }
-
-        h1 {
-            font-size: 1.8em;
-            line-height: 80px;
-        }
-
-        nav {
-            line-height: 45px;
-        }
-    }
-
-    #site_footer {
-        font-size: 0.85em;
+@media screen and (max-width: 500px) {
+    section {
+        padding: 2em 4em;
     }
 }
