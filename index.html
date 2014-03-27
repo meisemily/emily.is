@@ -21,10 +21,29 @@
         $(document).ready(function() {
             $.fn.fullpage({
                 menu: '#menu',
-                anchors: ['one', 'two', 'three', 'four', 'five'],
+                anchors: ['one', 'two', 'three', 'four'],
                 autoScrolling: false,
                 resize : false
             });
+
+            $.getJSON('http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=7day&user=leeladj&api_key=20b6cd99a92e234d7619bb34e99faf3a&format=json&callback=?',
+                function (data) {
+                    var chart = data.topalbums.album;
+                    var img;
+                    for (var i = 0 ; i < Math.min(4,chart.length); i++){
+                        img = chart[i].image[2]['#text'];
+
+                        // if (img.search(/noimage/i) > 1) {
+                        //     img = 'assets/img/lastfm.png';
+                        // }
+
+                        $('.music').append(
+                             "<li><a href='" + chart[i].url + "' title='" + chart[i].artist.name + " - " + chart[i].name + "'><img src='" + img + "'></a></li>"
+                        );
+                    }
+                    $('#lastfm').removeClass('loading');
+                }
+            );
         });
     </script>
 
@@ -55,11 +74,12 @@
     </section>
 
     <section class="section two">
-        <div class="content">
+        <div class="content center">
             <header>
-                <h1>Something else.</h1>
+                <h1>I like music.</h1>
             </header>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <ul class="music"></ul>
+            <p>(This is some of what I’ve been <a href="http://last.fm/user/leeladj">listening</a> to lately)</p>
         </div>
     </section>
 
@@ -78,15 +98,6 @@
                 <h1>Something else.</h1>
             </header>
             <p>Lorem ipsum dolor sit amet.</p>
-        </div>
-    </section>
-
-    <section class="section five">
-        <div class="content">
-            <header>
-                <h1>By the way...</h1>
-            </header>
-            <p>I stole this color palette from Wes Anderson.</p>
         </div>
     </section>
 
