@@ -7,7 +7,7 @@
 $bg_color:          #fff;
 $body_color:        #4b574d;
 $link_color:        #609F80;
-$link_hover_color:  #cbb345;
+$link_hover_color:  #d1bb59;
 
 // ===========================================================================
 // Mixins
@@ -115,7 +115,7 @@ body {
     color: $body_color;
     background-color: $bg_color;
     font-family: 'proxima-nova', helvetica, sans-serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     line-height: 1.6;
 }
 
@@ -236,6 +236,12 @@ p > a {
     }
 }
 
+.photo {
+    background: url('https://farm8.staticflickr.com/7381/11127904376_44485f950d_b.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .one {
     .border {
         position: absolute;
@@ -252,10 +258,6 @@ p > a {
 
 .three {
     @include section_colors(#fff, #af420a);
-}
-
-.four {
-    @include section_colors(#fff, #8d9876);
 }
 
 @media screen and (max-width: 800px) {
