@@ -207,7 +207,13 @@ p > a {
 }
 
 .one {
-    border-top: 1em solid #609f80;
+    .border {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 1em;
+        background-color: #609f80;
+    }
 }
 
 .two {
