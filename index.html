@@ -13,23 +13,80 @@
     <script type="text/javascript" src="//use.typekit.net/bne1pzd.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script src="/assets/js/jquery.fullPage.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.fn.fullpage({
+                menu: '#menu',
+                anchors: ['one', 'two', 'three', 'four', 'five'],
+                autoScrolling: false,
+                resize : false
+            });
+        });
+    </script>
+
     <link rel="icon" href="/assets/images/favicon.ico">
     <link rel="stylesheet" href="/assets/styles/css/global.css">
 </head>
 <body>
-    <section>
-        <img src="https://pbs.twimg.com/profile_images/1710243664/2051018_300.jpeg" alt="" class="img">
-        <header>
-            <h1>Hello.</h1>
+    <nav id="menu">
+        <a class="tease" href="#two" data-menuanchor="two">
+            <span class="arrow"><span class="offstage">Next</span></span>
+        </a>
+    </nav>
+    <section class="section one">
+        <div class="content">
+            <header>
+                <h1>Hello.</h1>
+            </header>
             <p>My name is Emily Getman. I design things at <a href="http://vimeo.com/meisemily" class="vimeo">Vimeo</a>. Previously, I worked at <a href="http://torrentfreak.com/limewire-pays-riaa-105-million-artists-get-nothing-110513/" class="limewire">LimeWire</a> and <a href="http://buzzfeed.com" class="buzzfeed">BuzzFeed</a>.</p>
-        </header>
 
-        <ul class="social_links">
-            <li><a href="http://twitter.com/emilygetman" class="ss-twitter"><span>Twitter</span></a></li>
-            <li><a href="http://log.emilygetman.com" class="ss-tumblr"><span>Tumblr</span></a></li>
-            <li><a href="http://rdio.com/people/meisemily" class="ss-rdio"><span>Rdio</span></a></li>
-            <li><a href="http://instagram.com/emilygetman" class="ss-instagram"><span>Instagram</span></a></li>
-        </ul>
+            <ul class="social_links">
+                <li><a href="http://twitter.com/emilygetman" class="ss-twitter"><span>Twitter</span></a></li>
+                <li><a href="http://log.emilygetman.com" class="ss-tumblr"><span>Tumblr</span></a></li>
+                <li><a href="http://rdio.com/people/meisemily" class="ss-rdio"><span>Rdio</span></a></li>
+                <li><a href="http://instagram.com/emilygetman" class="ss-instagram"><span>Instagram</span></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section two">
+        <div class="content">
+            <header>
+                <h1>Something else.</h1>
+            </header>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </section>
+
+    <section class="section three">
+        <div class="content">
+            <header>
+                <h1>Something else.</h1>
+            </header>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </section>
+
+    <section class="section four">
+        <div class="content">
+            <header>
+                <h1>Something else.</h1>
+            </header>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </div>
+    </section>
+
+    <section class="section five">
+        <div class="content">
+            <header>
+                <h1>By the way...</h1>
+            </header>
+            <p>I stole this color palette from Wes Anderson.</p>
+        </div>
     </section>
 
     <script>

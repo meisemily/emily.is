@@ -1,6 +1,15 @@
 @import "../../fonts/ss-social-regular.css";
 
 // ===========================================================================
+// Variables
+// ===========================================================================
+
+$bg_color:          #fff;
+$body_color:        #4b574d;
+$link_color:        #609F80;
+$link_hover_color:  #cbb345;
+
+// ===========================================================================
 // Mixins
 // ===========================================================================
 
@@ -17,19 +26,52 @@
     transform: $transform;
 }
 
+@mixin vertical_align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin section_colors($color: $page_link_color, $bg: $bg_color) {
+    color: $color;
+    background-color: $bg;
+
+    h1 {
+        color: $color;
+    }
+
+    a {
+        color: $color;
+        border-color: $color;
+    }
+}
+
 // ===========================================================================
-// Variables
+// Animations
 // ===========================================================================
 
-$accent_color:      #609F80;
-$bg_color:          #f6f6f6;
-$header_color:      #4B574D;
-$body_color:        $header_color;
-$link_color:        #609F80;
-$link_hover_color:  #CBB345;
+@-webkit-keyframes tease {
+    0%   { @include transform(translate(0, 0)); }
+    50%  { @include transform(translate(0, -20px)); }
+    100% { @include transform(translate(0, 0)); }
+}
+
+@-moz-keyframes tease {
+    0%   { @include transform(translate(0, 0)); }
+    50%  { @include transform(translate(0, -20px)); }
+    100% { @include transform(translate(0, 0)); }
+}
+
+@keyframes tease {
+    0%   { @include transform(translate(0, 0)); }
+    50%  { @include transform(translate(0, -20px)); }
+    100% { @include transform(translate(0, 0)); }
+}
 
 // ===========================================================================
-// Reset
+// Reset + Utilities
 // ===========================================================================
 
 body {
@@ -53,6 +95,14 @@ section {
     display: block;
 }
 
+.offstage {
+    display: block;
+    width: 0;
+    height: 0;
+    text-indent: -1000em;
+    overflow: hidden;
+}
+
 // ===========================================================================
 // Stuff
 // ===========================================================================
@@ -60,20 +110,21 @@ section {
 body {
     color: $body_color;
     background-color: $bg_color;
-    border-top: 1em solid $accent_color;
     font-family: 'proxima-nova', helvetica, sans-serif;
     font-size: 1.3rem;
     line-height: 1.6;
 }
 
 section {
-    margin: 0 auto;
-    padding: 4em 8em;
-    max-width: 600px;
+    .content {
+        padding: 0 8em;
+        margin: 0 auto;
+        max-width: 600px;
+        @include vertical_align;
+    }
 }
 
 h1 {
-    color: $header_color;
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 0.35em;
@@ -82,19 +133,6 @@ h1 {
 a {
     display: inline-block;
     text-decoration: none;
-    @include transition;
-
-    &:hover {
-        @include transform(translate(0, -2px));
-    }
-}
-
-.img {
-    margin-bottom: 1em;
-    width: 5em;
-    height: 5em;
-    background-color: lighten($body_color, 20%);
-    border-radius: 100%;
 }
 
 p > a {
@@ -104,6 +142,35 @@ p > a {
     &:hover {
         color: $link_hover_color;
         border-bottom: 2px solid $link_hover_color;
+    }
+}
+
+.tease {
+    $arrow_size: 10px;
+
+    position: absolute;
+    bottom: 1em;
+    left: 50%;
+    margin-left: -$arrow_size;
+    padding: 0.35em 0.7em;
+    background-color: lighten($body_color, 55%);
+    border-radius: 100%;
+
+    -webkit-animation: tease 4s infinite;
+    -moz-animation: tease 4s infinite;
+    animation: tease 4s infinite;
+
+    .arrow {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: $arrow_size $arrow_size 0 $arrow_size;
+        border-color: #fff transparent transparent transparent;
+    }
+
+    &:hover {
+        background-color: $link_hover_color;
     }
 }
 
@@ -117,12 +184,8 @@ p > a {
         color: lighten($body_color, 30%);
         font-size: 2rem;
 
-        > span {
-            display: block;
-            width: 0;
-            height: 0;
-            text-indent: -1000em;
-            overflow: hidden;
+        span {
+            @extend .offstage;
         }
 
         &.ss-twitter:hover {
@@ -143,14 +206,39 @@ p > a {
     }
 }
 
+.one {
+    border-top: 1em solid #609f80;
+}
+
+.two {
+    @include section_colors(#fff, #609f80);
+}
+
+.three {
+    @include section_colors(#fff, #af420a);
+}
+
+.four {
+    @include section_colors(#fff, #8d9876);
+}
+
 @media screen and (max-width: 600px) {
-    section {
-        padding: 4em;
+    section .content {
+        padding: 0 3.5em;
     }
 }
 
 @media screen and (max-width: 500px) {
-    section {
-        padding: 2em 4em;
+    h1 {
+        font-size: 3rem;
+    }
+
+    .img {
+        margin: 0 auto;
+    }
+
+    section .content {
+        padding: 0 2em;
+        text-align: center;
     }
 }
