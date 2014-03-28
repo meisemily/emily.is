@@ -21,7 +21,7 @@
         $(document).ready(function() {
             $.fn.fullpage({
                 menu: '#menu',
-                anchors: ['hello', 'photo', 'brooklyn', 'photo', 'three', 'contact'],
+                anchors: ['hello', 'photo', 'contact'],
                 autoScrolling: false,
                 resize : false
             });
@@ -33,11 +33,11 @@
 </head>
 <body>
     <nav id="menu">
-        <a class="tease" href="#two" data-menuanchor="two">
+        <a class="tease" href="#contact">
             <span class="arrow"><span class="offstage">Next</span></span>
         </a>
     </nav>
-    <section class="section one">
+    <section class="section hello">
         <div class="border"></div>
         <div class="content">
             <header>
@@ -47,36 +47,14 @@
         </div>
     </section>
 
-    <section class="section photo">
-    </section>
+    <div class="section photo nyc"></div>
 
-    <section class="section two">
-        <div class="content">
-            <header>
-                <h1>I live in Brooklyn.</h1>
-            </header>
-            <p>I moved to Brooklyn in 2007, a couple years after graduating from the New Media program at <a href="http://rit.edu">Rochester Institute of Technology</a>.</p>
-        </div>
-    </section>
-
-    <section class="section photo">
-    </section>
-
-    <section class="section three">
-        <div class="content">
-            <header>
-                <h1>Something</h1>
-            </header>
-            <p>I moved to Brooklyn in 2007, a couple years after graduating from the New Media program at Rochester Institute of Technology.</p>
-        </div>
-    </section>
-
-    <section class="section four">
+    <section class="section">
         <div class="content">
             <header>
                 <h1>Get in touch.</h1>
             </header>
-            <p>You can email me at emily at my last name dot com.</p>
+            <p>You can email me at emily at emily getman dot com.</p>
 
             <ul class="social_links">
                 <li><a href="http://twitter.com/emilygetman" class="ss-twitter"><span>Twitter</span></a></li>

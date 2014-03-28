@@ -5,9 +5,10 @@
 // ===========================================================================
 
 $bg_color:          #fff;
-$body_color:        #4b574d;
+$header_color:      #4b574d;
+$body_color:        lighten($header_color, 20%);
 $link_color:        #609F80;
-$link_hover_color:  #d1bb59;
+$link_hover_color:  #d8c571;
 
 // ===========================================================================
 // Mixins
@@ -34,7 +35,7 @@ $link_hover_color:  #d1bb59;
     transform: translateY(-50%);
 }
 
-@mixin section_colors($color: $page_link_color, $bg: $bg_color) {
+/*@mixin section_colors($color: $page_link_color, $bg: $bg_color) {
     color: $color;
     background-color: $bg;
 
@@ -42,11 +43,15 @@ $link_hover_color:  #d1bb59;
         color: $color;
     }
 
+    p {
+        color: transparentize($color, 0.4);
+    }
+
     a {
         color: $color;
         border-color: $color;
     }
-}
+}*/
 
 // ===========================================================================
 // Animations
@@ -129,6 +134,7 @@ section {
 }
 
 h1 {
+    color: $header_color;
     font-size: 4rem;
     line-height: 1.1;
     margin-bottom: 0.35em;
@@ -157,7 +163,7 @@ p > a {
     left: 50%;
     margin-left: -$arrow_size;
     padding: 0.35em 0.7em;
-    background-color: lighten($body_color, 55%);
+    background-color: lighten($header_color, 55%);
     border-radius: 100%;
 
     -webkit-animation: tease 4s infinite;
@@ -211,28 +217,27 @@ p > a {
 }
 
 .photo {
-    background: url('https://farm8.staticflickr.com/7381/11127904376_44485f950d_b.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-}
 
-.one {
-    .border {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 1em;
-        background-color: #609f80;
+    &.nyc {
+        background-image: url('https://farm7.staticflickr.com/6111/6315506575_50b1080eae_o.jpg');
     }
 }
 
-.two {
-    @include section_colors(#fff, #609f80);
+.border {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 0.8em;
+    background-color: #609f80;
 }
 
-.three {
-    @include section_colors(#fff, #af420a);
-}
+//.blue {
+//    @include section_colors(#fff, #4e81a2);
+//}
 
 @media screen and (max-width: 800px) {
     section .content {
