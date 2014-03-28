@@ -170,13 +170,15 @@ p > a {
 }
 
 .tease {
-    $arrow_size: 10px;
+    $arrow_size: 0.55em;
+    $button_size: 2em;
 
     position: absolute;
     bottom: 1em;
     left: 50%;
-    margin-left: -$arrow_size;
-    padding: 0.4em 0.7em;
+    margin-left: -$button_size/2;
+    width: $button_size;
+    height: $button_size;
     background-color: lighten($header_color, 55%);
     border-radius: 100%;
 
@@ -185,7 +187,8 @@ p > a {
     animation: tease 4s infinite;
 
     .arrow {
-        display: inline-block;
+        display: block;
+        margin: 0.8em auto;
         width: 0;
         height: 0;
         border-style: solid;
@@ -202,6 +205,7 @@ p > a {
     li {
         display: inline-block;
         margin: 1.5em 0.3em;
+        margin-bottom: 0;
     }
 
     a {
@@ -267,22 +271,18 @@ p > a {
 }
 
 @media screen and (max-width: 480px) {
-    body {
-        font-size: 1.1rem;
-    }
-
     h1 {
         font-size: 2.2rem;
     }
 }
 
 @media screen and (max-height: 400px) {
-    body {
-        font-size: 1.1rem;
-    }
-
     h1 {
         font-size: 2.2rem;
+    }
+
+    .hello .content {
+        padding-bottom: 0;
     }
 
     .mark,
