@@ -270,13 +270,19 @@ p > a {
     }
 }
 
-@media screen and (max-width: 480px) {
+// iPhone
+@media screen and (max-width: 320px) {
     h1 {
         font-size: 2.2rem;
     }
+
+    section .content {
+        padding: 0 1.5em;
+    }
 }
 
-@media screen and (max-height: 400px) {
+// Landscape / Short windows
+@media screen and (max-height: 320px) {
     h1 {
         font-size: 2.2rem;
     }
