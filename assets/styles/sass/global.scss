@@ -6,7 +6,7 @@
 
 $bg_color:          #fff;
 $header_color:      #4b574d;
-$body_color:        lighten($header_color, 20%);
+$body_color:        #848484;
 $link_color:        #609F80;
 $link_hover_color:  #d8c571;
 
@@ -176,7 +176,7 @@ p > a {
     bottom: 1em;
     left: 50%;
     margin-left: -$arrow_size;
-    padding: 0.35em 0.7em;
+    padding: 0.4em 0.7em;
     background-color: lighten($header_color, 55%);
     border-radius: 100%;
 
@@ -241,6 +241,10 @@ p > a {
     }
 }
 
+.hello .content {
+    padding-bottom: 2.4em;
+}
+
 //.blue {
 //    @include section_colors(#fff, #4e81a2);
 //}
@@ -269,10 +273,6 @@ p > a {
 
     h1 {
         font-size: 2.2rem;
-    }
-
-    .hello .content {
-        padding-bottom: 2.4em;
     }
 }
 
