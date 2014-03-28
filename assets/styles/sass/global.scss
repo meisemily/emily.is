@@ -210,32 +210,6 @@ p > a {
     }
 }
 
-.music {
-    margin: 2em -2% 1.5em -2%;
-
-    li {
-        display: inline-block;
-        margin: 2%;
-        width: 21%;
-        height: 21%;
-        text-align: center;
-    }
-
-    img {
-        display: block;
-        max-width: 100%;
-        max-height: 100%;
-        border-radius: 100%;
-        opacity: 0.5;
-        @include transition;
-
-        &:hover {
-            @include transform(translateY(-2px)scale(1.1));
-            opacity: 1;
-        }
-    }
-}
-
 .photo {
     background: url('https://farm8.staticflickr.com/7381/11127904376_44485f950d_b.jpg');
     background-attachment: fixed;

@@ -21,29 +21,10 @@
         $(document).ready(function() {
             $.fn.fullpage({
                 menu: '#menu',
-                anchors: ['one', 'photo', 'two', 'three'],
+                anchors: ['hello', 'photo', 'brooklyn', 'photo', 'three', 'contact'],
                 autoScrolling: false,
                 resize : false
             });
-
-            $.getJSON('http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=7day&user=leeladj&api_key=20b6cd99a92e234d7619bb34e99faf3a&format=json&callback=?',
-                function (data) {
-                    var chart = data.topalbums.album;
-                    var img;
-                    for (var i = 0 ; i < Math.min(4,chart.length); i++){
-                        img = chart[i].image[2]['#text'];
-
-                        // if (img.search(/noimage/i) > 1) {
-                        //     img = 'assets/img/lastfm.png';
-                        // }
-
-                        $('.music').append(
-                             "<li><a href='" + chart[i].url + "' title='" + chart[i].artist.name + " - " + chart[i].name + "'><img src='" + img + "'></a></li>"
-                        );
-                    }
-                    $('#lastfm').removeClass('loading');
-                }
-            );
         });
     </script>
 
@@ -63,13 +44,6 @@
                 <h1>Hello.</h1>
             </header>
             <p>My name is Emily Getman. I design things at <a href="http://vimeo.com/meisemily" class="vimeo">Vimeo</a>. Previously, I worked at <a href="http://torrentfreak.com/limewire-pays-riaa-105-million-artists-get-nothing-110513/" class="limewire">LimeWire</a> and <a href="http://buzzfeed.com" class="buzzfeed">BuzzFeed</a>.</p>
-
-            <ul class="social_links">
-                <li><a href="http://twitter.com/emilygetman" class="ss-twitter"><span>Twitter</span></a></li>
-                <li><a href="http://log.emilygetman.com" class="ss-tumblr"><span>Tumblr</span></a></li>
-                <li><a href="http://rdio.com/people/meisemily" class="ss-rdio"><span>Rdio</span></a></li>
-                <li><a href="http://instagram.com/emilygetman" class="ss-instagram"><span>Instagram</span></a></li>
-            </ul>
         </div>
     </section>
 
@@ -77,12 +51,11 @@
     </section>
 
     <section class="section two">
-        <div class="content center">
+        <div class="content">
             <header>
-                <h1>I like music.</h1>
+                <h1>I live in Brooklyn.</h1>
             </header>
-            <ul class="music"></ul>
-            <p>(This is some of what I’ve been <a href="http://last.fm/user/leeladj">listening</a> to lately)</p>
+            <p>I moved to Brooklyn in 2007, a couple years after graduating from the New Media program at <a href="http://rit.edu">Rochester Institute of Technology</a>.</p>
         </div>
     </section>
 
@@ -92,18 +65,25 @@
     <section class="section three">
         <div class="content">
             <header>
-                <h1>Something else.</h1>
+                <h1>Something</h1>
             </header>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>I moved to Brooklyn in 2007, a couple years after graduating from the New Media program at Rochester Institute of Technology.</p>
         </div>
     </section>
 
     <section class="section four">
         <div class="content">
             <header>
-                <h1>Something else.</h1>
+                <h1>Get in touch.</h1>
             </header>
-            <p>Lorem ipsum dolor sit amet.</p>
+            <p>You can email me at emily at my last name dot com.</p>
+
+            <ul class="social_links">
+                <li><a href="http://twitter.com/emilygetman" class="ss-twitter"><span>Twitter</span></a></li>
+                <li><a href="http://log.emilygetman.com" class="ss-tumblr"><span>Tumblr</span></a></li>
+                <li><a href="http://rdio.com/people/meisemily" class="ss-rdio"><span>Rdio</span></a></li>
+                <li><a href="http://instagram.com/emilygetman" class="ss-instagram"><span>Instagram</span></a></li>
+            </ul>
         </div>
     </section>
 
