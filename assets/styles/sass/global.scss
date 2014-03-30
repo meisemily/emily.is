@@ -5,14 +5,32 @@
 // ===========================================================================
 
 $bg_color:          #fff;
-$header_color:      #4b574d;
+$header_color:      #505751;
 $body_color:        #848484;
-$link_color:        #609F80;
-$link_hover_color:  #d8c571;
+$link_color:        #fc5776;
+$link_hover_color:  #3987c6;
 
 // ===========================================================================
 // Mixins
 // ===========================================================================
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
 
 @mixin transition($duration: 0.08s, $property: all, $easing: ease-out, $delay: 0s) {
     -ms-transition: $property $duration $easing $delay;
@@ -27,12 +45,37 @@ $link_hover_color:  #d8c571;
     transform: $transform;
 }
 
+@mixin animation($animation) {
+    -moz-animation: $animation;
+    -webkit-animation: $animation;
+    animation: $animation;
+}
+
 @mixin vertical_align {
     position: relative;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+}
+
+@mixin retina_background($file, $type, $width, $height) {
+    background-image: url($file + '.' + $type);
+
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (-moz-min-device-pixel-ratio: 2),
+        only screen and (-o-min-device-pixel-ratio: 2/1),
+        only screen and (min-device-pixel-ratio: 2),
+        only screen and (min-resolution: 192dpi),
+        only screen and (min-resolution: 2dppx) {
+        & {
+          background-image: url($file + '@2x.' + $type);
+          -webkit-background-size: $width $height;
+          -moz-background-size: $width $height;
+          -o-background-size: $width $height;
+          background-size: $width $height;
+        }
+    }
 }
 
 /*@mixin section_colors($color: $page_link_color, $bg: $bg_color) {
@@ -57,22 +100,18 @@ $link_hover_color:  #d8c571;
 // Animations
 // ===========================================================================
 
-@-webkit-keyframes tease {
-    0%   { @include transform(translate(0, 0)); }
-    50%  { @include transform(translate(0, -20px)); }
-    100% { @include transform(translate(0, 0)); }
-}
+@include keyframes(tease) {
+    0% {
+        @include transform(translate(0, 0));
+    }
 
-@-moz-keyframes tease {
-    0%   { @include transform(translate(0, 0)); }
-    50%  { @include transform(translate(0, -20px)); }
-    100% { @include transform(translate(0, 0)); }
-}
+    50% {
+        @include transform(translate(0, -20px));
+    }
 
-@keyframes tease {
-    0%   { @include transform(translate(0, 0)); }
-    50%  { @include transform(translate(0, -20px)); }
-    100% { @include transform(translate(0, 0)); }
+    100% {
+        @include transform(translate(0, 0));
+    }
 }
 
 // ===========================================================================
@@ -148,6 +187,7 @@ a {
 p > a {
     color: $link_color;
     border-bottom: 2px solid $link_color;
+    @include transition;
 
     &:hover {
         color: $link_hover_color;
@@ -156,21 +196,28 @@ p > a {
 }
 
 .mark {
-    margin-bottom: 1.4em;
+    display: block;
+    margin-bottom: 24px;
     width: 100px;
     height: 100px;
+    @include retina_background(/assets/images/mark, png, 100px, 100px);
 }
 
 .border {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 0.8em;
-    background-color: #609f80;
+    height: 1em;
+    background-color: #2a9ad2;
+    background-image: -o-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
+    background-image: -moz-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
+    background-image: -webkit-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
+    background-image: -ms-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
+    background-image: linear-gradient(to right, #2a9ad2 0%, #5a4eab 100%);
 }
 
 .tease {
-    $arrow_size: 0.55em;
+    $arrow_size: 0.52em;
     $button_size: 2em;
 
     position: absolute;
@@ -181,10 +228,7 @@ p > a {
     height: $button_size;
     background-color: lighten($header_color, 55%);
     border-radius: 100%;
-
-    -webkit-animation: tease 4s infinite;
-    -moz-animation: tease 4s infinite;
-    animation: tease 4s infinite;
+    @include animation(tease 4s infinite);
 
     .arrow {
         display: block;
@@ -197,7 +241,7 @@ p > a {
     }
 
     &:hover {
-        background-color: $link_hover_color;
+        background-color: $link_color;
     }
 }
 
@@ -261,12 +305,16 @@ p > a {
 
 @media screen and (max-width: 500px) {
     h1 {
-        font-size: 3rem;
+        font-size: 3.1rem;
     }
 
     section .content {
         padding: 0 2em;
         text-align: center;
+    }
+
+    .mark {
+        margin: 0 auto 40px auto;
     }
 }
 
