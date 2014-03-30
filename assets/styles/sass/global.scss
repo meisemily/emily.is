@@ -32,7 +32,7 @@ $link_hover_color:  #3987c6;
     }
 }
 
-@mixin transition($duration: 0.08s, $property: all, $easing: ease-out, $delay: 0s) {
+@mixin transition($duration: 0.18s, $property: all, $easing: ease-out, $delay: 0s) {
     -ms-transition: $property $duration $easing $delay;
     -webkit-transition: $property $duration $easing $delay;
     transition: $property $duration $easing $delay;
@@ -78,6 +78,16 @@ $link_hover_color:  #3987c6;
     }
 }
 
+@mixin hide_tease() {
+    .tease {
+        display: none;
+    }
+
+    .hello .content {
+        padding-bottom: 0;
+    }
+}
+
 /*@mixin section_colors($color: $page_link_color, $bg: $bg_color) {
     color: $color;
     background-color: $bg;
@@ -106,7 +116,7 @@ $link_hover_color:  #3987c6;
     }
 
     50% {
-        @include transform(translate(0, -20px));
+        @include transform(translate(0, -10px));
     }
 
     100% {
@@ -182,12 +192,12 @@ h1 {
 a {
     display: inline-block;
     text-decoration: none;
+    @include transition;
 }
 
 p > a {
     color: $link_color;
     border-bottom: 2px solid $link_color;
-    @include transition;
 
     &:hover {
         color: $link_hover_color;
@@ -221,12 +231,12 @@ p > a {
     $button_size: 2em;
 
     position: absolute;
-    bottom: 1em;
+    bottom: 0.8em;
     left: 50%;
     margin-left: -$button_size/2;
     width: $button_size;
     height: $button_size;
-    background-color: lighten($header_color, 55%);
+    background-color: transparentize($link_color, 0.4);
     border-radius: 100%;
     @include animation(tease 4s infinite);
 
@@ -237,11 +247,16 @@ p > a {
         height: 0;
         border-style: solid;
         border-width: $arrow_size $arrow_size 0 $arrow_size;
-        border-color: #fff transparent transparent transparent;
+        border-color: darken($link_color, 5%) transparent transparent transparent;
+        @include transition;
     }
 
     &:hover {
         background-color: $link_color;
+
+        .arrow {
+            border-color: darken($link_color, 30%) transparent transparent transparent;
+        }
     }
 }
 
@@ -253,7 +268,7 @@ p > a {
     }
 
     a {
-        color: lighten($body_color, 30%);
+        color: lighten($body_color, 25%);
         font-size: 2rem;
 
         span {
@@ -303,7 +318,7 @@ p > a {
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) and (min-height: 420px) {
     h1 {
         font-size: 3.1rem;
     }
@@ -316,6 +331,26 @@ p > a {
     .mark {
         margin: 0 auto 40px auto;
     }
+
+    @include hide_tease;
+}
+
+// Landscape / Short windows
+@media screen and (max-height: 420px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .mark {
+        position: absolute;
+        left: 30px;
+    }
+
+    .hello .content {
+        padding: 0 1.5em 0 8.4em;
+    }
+
+    @include hide_tease;
 }
 
 // iPhone
@@ -326,21 +361,5 @@ p > a {
 
     section .content {
         padding: 0 1.5em;
-    }
-}
-
-// Landscape / Short windows
-@media screen and (max-height: 320px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-
-    .hello .content {
-        padding-bottom: 0;
-    }
-
-    .mark,
-    .tease {
-        display: none;
     }
 }
