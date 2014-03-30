@@ -174,10 +174,12 @@ body {
 }
 
 section {
+    position: relative;
+
     .content {
         padding: 0 8em;
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 640px;
         @include vertical_align;
     }
 }
@@ -217,7 +219,7 @@ p > a {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 1em;
+    height: 1.2em;
     background-color: #2a9ad2;
     background-image: -o-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
     background-image: -moz-linear-gradient(right, #2a9ad2 0%, #5a4eab 100%);
@@ -255,7 +257,7 @@ p > a {
         background-color: $link_color;
 
         .arrow {
-            border-color: darken($link_color, 30%) transparent transparent transparent;
+            border-color: darken($link_color, 35%) transparent transparent transparent;
         }
     }
 }
