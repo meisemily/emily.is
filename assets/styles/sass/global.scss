@@ -238,7 +238,7 @@ p > a {
     margin-left: -$button_size/2;
     width: $button_size;
     height: $button_size;
-    background-color: transparentize($link_color, 0.4);
+    background-color: transparentize($link_color, 0.5);
     border-radius: 100%;
     @include animation(tease 4s infinite);
 
