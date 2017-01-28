@@ -1,0 +1,389 @@
+// ===========================================================================
+// Variables
+// ===========================================================================
+
+$white:             #fff;
+$pink:              #dd0569;
+$blue:              #00adef;
+
+$bg_color:          #000;
+$body_color:        #b7b6b9;
+
+// ===========================================================================
+// Mixins
+// ===========================================================================
+
+@mixin transition($duration: 0.1s, $property: all, $easing: ease-out, $delay: 0s) {
+    -ms-transition: $property $duration $easing $delay;
+    -webkit-transition: $property $duration $easing $delay;
+    transition: $property $duration $easing $delay;
+}
+
+@mixin vertical_align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin transform($transform) {
+    -ms-transform: $transform;
+    -moz-transform: $transform;
+    -webkit-transform: $transform;
+    transform: $transform;
+}
+
+@mixin animation($animation) {
+    -moz-animation: $animation;
+    -webkit-animation: $animation;
+    animation: $animation;
+}
+
+@mixin filter($value){
+    -o-filter: $value;
+    -ms-filter: $value;
+    -webkit-filter: $value;
+    -moz-filter: $value;
+    filter: $value;
+}
+
+@mixin gradient($angle, $gradient1, $gradient2) {
+    background-color: $gradient2; /* Fallback Color */
+    background-image: -webkit-gradient(linear, $angle, from($gradient1), to($gradient2)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient($angle, $gradient1, $gradient2); /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image:    -moz-linear-gradient($angle, $gradient1, $gradient2); /* FF3.6 */
+    background-image:     -ms-linear-gradient($angle, $gradient1, $gradient2); /* IE10 */
+    background-image:      -o-linear-gradient($angle, $gradient1, $gradient2); /* Opera 11.10+ */
+    background-image:         linear-gradient($angle, $gradient1, $gradient2);
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=$angle,StartColorStr='#{$gradient1}', EndColorStr='#{$gradient2}');
+}
+
+@mixin box_shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $color;
+        -moz-box-shadow:inset $top $left $blur $color;
+        box-shadow:inset $top $left $blur $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+// ===========================================================================
+// Animations
+// ===========================================================================
+
+@include keyframes(appear) {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@include keyframes(pulsate) {
+    0% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 0.3;
+    }
+}
+
+// ===========================================================================
+// Reset
+// ===========================================================================
+
+body {margin: 0;padding: 0;}
+p, h1, ul {margin: 0;padding: 0;}
+li {list-style-type: none;}
+header, section {display: block;}
+
+// ===========================================================================
+// Stuff
+// ===========================================================================
+
+html,
+body {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    color: $body_color;
+    background-color: $bg_color;
+    font-family: 'proxima-nova', helvetica, sans-serif;
+    line-height: 1.3;
+    overflow: hidden;
+    //-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    color: $white;
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
+p {
+    font-size: 20px;
+}
+
+a {
+    color: lighten($pink, 10%);
+    text-decoration: none;
+
+    &:hover {
+        color: $white;
+    }
+
+    &:active {
+        opacity: 0.8;
+    }
+}
+
+// ===========================================================================
+// Structure
+// ===========================================================================
+
+.wrap {
+    position: relative;
+    height: 101%;
+    min-height: 101%;
+
+    // Gradient mask
+    &:after {
+        display: block;
+        position: fixed;
+        content: '';
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        min-width: 101%;
+        min-height: 101%;
+        width: auto;
+        height: auto;
+        z-index: 1;
+        background-size: 100% 100%;
+        @include gradient(to bottom right, $blue, $pink);
+        @include animation(appear 1s ease);
+    }
+}
+
+// Loading state
+.loading .wrap:after {
+    @include animation(pulsate 2.2s ease-in infinite);
+}
+
+#lastfm {
+    position: fixed;
+    margin-top: -25px; // Offset
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 2;
+
+    > li {
+        position: relative;
+        float: left;
+        width: 20%;
+        line-height: 0;
+
+        a {
+            &:hover img {
+                opacity: 1 !important; // Sad, but have to fadeTo and that puts opacity inline
+                @include filter(grayscale(0));
+            }
+
+            &:active img {
+                opacity: 0.8 !important; // Sad, but have to fadeTo and that puts opacity inline
+            }
+        }
+
+        // Force square ratio for slow-loading images
+        &:before {
+            display: inline-block;
+            content: '';
+            margin-top: 100%;
+        }
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            @include filter(contrast(300%) brightness(120%) grayscale(100%));
+        }
+    }
+}
+
+.box,
+.info {
+    z-index: 1000;
+    @include animation(appear 1s ease);
+}
+
+.box {
+    margin: 0 auto;
+    padding: 55px 40px;
+    width: 450px;
+    text-align: center;
+    background-color: transparentize($bg_color, 0.15);
+    @include vertical_align;
+    @include box_shadow(0, 0, 200px, transparentize($bg_color, 0.6));
+}
+
+.info {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+
+    a {
+        display: block;
+        padding: 9px 12px;
+        color: $white;
+        font-size: 17px;
+        background-color: transparentize($pink, 0.15);
+
+        &:hover {
+            background-color: $blue;
+        }
+    }
+}
+
+.social {
+    margin-top: 10px;
+
+    path {
+        fill: $body_color;
+    }
+
+    .twitter {
+        margin-bottom: 1px;
+    }
+
+    li {
+        display: inline-block;
+        margin-top: 4px;
+
+        + li {
+            margin-left: 16px;
+        }
+    }
+
+    a {
+        $icon_padding: 4px;
+
+        display: block;
+        margin: -$icon_padding 0;
+        padding: $icon_padding;
+        height: 24px;
+
+        &:hover path {
+            fill: $white;
+        }
+
+        &:active path {
+            fill: $body_color;
+        }
+    }
+}
+
+// ===========================================================================
+// Media Queries
+// ===========================================================================
+@media screen and (max-width: 1150px) {
+    #lastfm > li {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #lastfm > li {
+        width: 33.3%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .box {
+        width: auto;
+        margin: 15px;
+    }
+
+    .info {
+        display: none;
+    }
+
+    /*
+    .info {
+        margin: 0;
+        right: auto;
+        width: 100%;
+        text-align: center;
+
+        a {
+            display: inline-block;
+            font-size: 16px;
+        }
+    }*/
+}
+
+@media screen and (max-width: 450px) {
+    h1 {
+        font-size: 19px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .box {
+        padding: 35px 15px;
+    }
+
+    .social {
+        margin-top: 7px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .info {
+        display: none;
+    }
+}
