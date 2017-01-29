@@ -204,8 +204,14 @@ a {
 }
 
 // Loading state
-.loading .wrap:after {
-    @include animation(pulsate 2.2s ease-in infinite);
+.loading {
+    .wrap:after {
+        @include animation(pulsate 2.2s ease-in infinite);
+    }
+
+    &.fail .wrap:after {
+        animation-play-state: paused;
+    }
 }
 
 #lastfm {

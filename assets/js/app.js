@@ -39,5 +39,9 @@ $(document).ready(function() {
         });
       });
     }
-  );
+  ).fail(function() {
+    if ($('body').hasClass('loading')) {
+      $('body').addClass('fail');
+    }
+  });
 });
