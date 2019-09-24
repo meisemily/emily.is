@@ -5,7 +5,7 @@ function isTouchDevice() {
 }
 
 $(document).ready(function() {
-  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=7day&user=leeladj&api_key=' + Secrets.lastfm_api + '&format=json&callback=?',
+  $.getJSON('http://ws.audioscrobbler.com/2.0/?method=user.gettopalbums&period=1month&user=leeladj&api_key=' + Secrets.lastfm_api + '&format=json&callback=?',
     function (data) {
       var chart = data.topalbums.album;
       var img;
